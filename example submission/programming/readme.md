@@ -1,12 +1,16 @@
-### wallet-api
+## Document for wallet-api
 
-start
+### Start
 
 ```bash
+# docker
+docker-compose up -d
+
+# express
 pnpm dev
 ```
 
-install
+### Install
 
 ```bash
 pnpm init
@@ -14,4 +18,8 @@ pnpm init
 # express
 pnpm i express
 pnpm i -D @types/node @types/express typescript eslint nodemon ts-node dotenv
+
+# maria
+pnpm i mariadb
+pnpm i mysql2 sequelize
 ```
