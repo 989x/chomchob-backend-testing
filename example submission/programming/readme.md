@@ -22,4 +22,8 @@ pnpm i -D @types/node @types/express typescript eslint nodemon ts-node dotenv
 # maria
 pnpm i mariadb
 pnpm i mysql2 sequelize
+
+# auth
+pnpm i @types/bcrypt bcrypt
+pnpm i @types/jsonwebtoken jsonwebtoken
 ```

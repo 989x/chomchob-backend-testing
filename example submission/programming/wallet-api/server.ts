@@ -1,6 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
-import sequelize from "./config/db-sequelize";
+import sequelize from "./configs/db-sequelize";
+import authRoutes from "./routes/auth";
 
 const app = express();
 const port = 5000;
@@ -19,12 +20,11 @@ async function startServer() {
   }
 }
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
+app.use("/auth", authRoutes);
 
-app.get("/test", (req: Request, res: Response) => {
-  res.status(200).send("Ok");
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).send("Hello World!");
+
 });
 
 startServer();
