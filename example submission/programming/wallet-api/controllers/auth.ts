@@ -1,22 +1,8 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import User from "../models/user";
 import Wallet from "../models/wallet";
-import { JWT_SECRET } from "../configs/secrets";
-
-function generateToken(user: any) {
-  const payload = {
-    userId: user.id,
-    username: user.username,
-    email: user.email,
-    role: user.role,
-  };
-
-  const expiresIn = "23h";
-
-  return jwt.sign(payload, JWT_SECRET, { expiresIn });
-}
+import { generateToken } from "../middlewares/accessToken";
 
 export const register = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;

@@ -1,7 +1,9 @@
 import express from "express";
 import { Request, Response } from "express";
 import sequelize from "./configs/db-sequelize";
+import adminRoutes from "./routes/admin";
 import authRoutes from "./routes/auth";
+import userRoutes from "./routes/user";
 
 const app = express();
 const port = 5000;
@@ -20,7 +22,9 @@ async function startServer() {
   }
 }
 
+app.use("/admin", adminRoutes);
 app.use("/auth", authRoutes);
+app.use("/api", userRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).send("Hello World!");
