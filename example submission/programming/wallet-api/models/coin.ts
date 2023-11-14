@@ -4,6 +4,7 @@ import sequelize from "../configs/db-sequelize";
 class Coin extends Model {
   public coinId!: number;
   public symbol!: string;
+  public name!: string; 
   public exchangeRate!: number;
 }
 
@@ -18,6 +19,10 @@ Coin.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     exchangeRate: {
       type: DataTypes.FLOAT,

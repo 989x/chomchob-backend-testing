@@ -8,6 +8,8 @@ class Wallet extends Model {
   public userId!: number;
   public coinId!: number;
 
+  public coin?: Coin;
+
   public updateBalance(amount: number) {
     this.balance += amount;
     return this.save();
