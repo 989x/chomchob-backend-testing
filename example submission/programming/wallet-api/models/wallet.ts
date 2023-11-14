@@ -17,9 +17,9 @@ Wallet.init(
       primaryKey: true,
     },
     currency: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM(...Object.values(Currency)),
       allowNull: false,
-      defaultValue: "ETH",
+      defaultValue: Currency.ETH,
     },
     balance: {
       type: DataTypes.FLOAT,

@@ -20,9 +20,9 @@ User.init(
       primaryKey: true,
     },
     role: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM(...Object.values(UserRole)),
       allowNull: false,
-      defaultValue: "general",
+      defaultValue: UserRole.GENERAL,
     },
     email: {
       type: DataTypes.STRING,

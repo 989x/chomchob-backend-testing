@@ -1,3 +1,11 @@
-export type UserRole = "admin" | "general";
+export enum UserRole {
+  ADMIN = "admin",
+  GENERAL = "general",
+  TRIAL = "trial",
+  SUSPENDED = "suspended",
+}
 
-export type Currency = "ETH" | "BTC";
+export enum Currency {
+  ETH = "ETH",
+  BTC = "BTC",
+}
