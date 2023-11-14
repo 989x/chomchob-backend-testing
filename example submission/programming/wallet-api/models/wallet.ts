@@ -1,25 +1,25 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../configs/db-sequelize";
-import { Currency } from "../utils/types";
+import Coin from "./coin";
 
 class Wallet extends Model {
-  public id!: number;
-  public currency!: Currency;
+  public walletId!: number;
   public balance!: number;
   public userId!: number;
+  public coinId!: number;
+
+  public updateBalance(amount: number) {
+    this.balance += amount;
+    return this.save();
+  }
 }
 
 Wallet.init(
   {
-    id: {
+    walletId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-    },
-    currency: {
-      type: DataTypes.ENUM(...Object.values(Currency)),
-      allowNull: false,
-      defaultValue: Currency.ETH,
     },
     balance: {
       type: DataTypes.FLOAT,
@@ -30,11 +30,17 @@ Wallet.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    coinId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     tableName: "wallets",
   }
 );
+
+Wallet.belongsTo(Coin, { foreignKey: "coinId" });
 
 export default Wallet;

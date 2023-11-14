@@ -5,7 +5,8 @@ export enum UserRole {
   SUSPENDED = "suspended",
 }
 
-export enum Currency {
-  ETH = "ETH",
-  BTC = "BTC",
+export enum UserStatus {
+  PENDING = "pending",
+  ACTIVE = "active",
+  SUSPENDED = "suspended",
 }

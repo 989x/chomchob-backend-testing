@@ -25,17 +25,17 @@ export const register = async (req: Request, res: Response) => {
     });
 
     // create new wallet
-    const newWallet = await Wallet.create({ userId: newUser.id });
+    const newWallet = await Wallet.create({ userId: newUser.userId });
 
     res.status(201).json({
       message: "Registration successful",
       user: {
-        id: newUser.id,
+        userId: newUser.userId,
         email: newUser.email,
         username: newUser.username,
       },
       wallet: {
-        id: newWallet.id,
+        walletId: newWallet.walletId,
         userId: newWallet.userId,
       },
     });
@@ -64,7 +64,7 @@ export const login = async (req: Request, res: Response) => {
     // create accessToken
     const token = generateToken(user);
 
-    res.status(200).json({ token, userId: user.id });
+    res.status(200).json({ token, userId: user.userId });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Login failed" });

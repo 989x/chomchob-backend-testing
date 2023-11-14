@@ -1,11 +1,12 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../configs/db-sequelize";
 import Wallet from "./wallet";
-import { UserRole } from "../utils/types";
+import { UserRole, UserStatus } from "../utils/types";
 
 class User extends Model {
-  public id!: number;
+  public userId!: number;
   public role!: UserRole; 
+  public status!: UserStatus;
   public verified!: boolean;
   public email!: string;
   public username!: string;
@@ -14,7 +15,7 @@ class User extends Model {
 
 User.init(
   {
-    id: {
+    userId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -23,6 +24,11 @@ User.init(
       type: DataTypes.ENUM(...Object.values(UserRole)),
       allowNull: false,
       defaultValue: UserRole.GENERAL,
+    },
+    status: {
+      type: DataTypes.ENUM(...Object.values(UserStatus)),
+      allowNull: false,
+      defaultValue: UserStatus.ACTIVE,
     },
     email: {
       type: DataTypes.STRING,
