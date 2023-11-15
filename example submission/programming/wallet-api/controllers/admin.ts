@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import User from "../models/user";
 import Coin from "../models/coin";
 import Collect from "../models/collect";
+import Transaction from "../models/transaction"; 
+import { TransactionType } from "../utils/types";
 
 // ________________________________________ user
 
@@ -96,6 +98,14 @@ export const increaseBalance = async (req: Request, res: Response) => {
       });
     }
 
+    // create new transaction record
+    await Transaction.create({
+      userId: user.userId,
+      coinId: coin.coinId,
+      amount: amount,
+      type: TransactionType.INCREASE,
+    });
+
     return res.status(200).json({ message: "Balance increased successfully" });
   } catch (error) {
     console.error("Error increasing balance:", error);
@@ -140,6 +150,14 @@ export const decreaseBalance = async (req: Request, res: Response) => {
       }
 
       await existingCollection.save();
+
+      // create new transaction record
+      await Transaction.create({
+        userId: user.userId,
+        coinId: coin.coinId,
+        amount: amount,
+        type: TransactionType.DECREASE,
+      });
     } else {
       return res.status(400).json({ error: "No existing collection found" });
     }

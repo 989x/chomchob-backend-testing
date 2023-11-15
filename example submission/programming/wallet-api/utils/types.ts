@@ -10,3 +10,8 @@ export enum UserStatus {
   ACTIVE = "active",
   SUSPENDED = "suspended",
 }
+
+export enum TransactionType {
+  INCREASE = "increase",
+  DECREASE = "decrease",
+}
