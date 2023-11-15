@@ -14,4 +14,5 @@ export enum UserStatus {
 export enum TransactionType {
   INCREASE = "increase",
   DECREASE = "decrease",
+  SAME_CURRENCY_TRANSFER = "same_currency_transfer",
 }

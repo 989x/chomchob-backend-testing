@@ -4,7 +4,8 @@ import { TransactionType } from "../utils/types";
 
 class Transaction extends Model {
   public transactionId!: number;
-  public userId!: number;
+  public senderId!: number;
+  public recipientId!: number;
   public coinId!: number;
   public amount!: number;
   public type!: TransactionType;
@@ -17,7 +18,11 @@ Transaction.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    userId: {
+    senderId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    recipientId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

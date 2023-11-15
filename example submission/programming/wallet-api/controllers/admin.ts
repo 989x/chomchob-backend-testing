@@ -3,6 +3,7 @@ import User from "../models/user";
 import Coin from "../models/coin";
 import Collect from "../models/collect";
 import Transaction from "../models/transaction"; 
+import { AuthRequest } from "../middlewares/accessToken";
 import { TransactionType } from "../utils/types";
 
 // ________________________________________ user
@@ -58,7 +59,8 @@ export const getTotalBalance = async (req: Request, res: Response) => {
   }
 };
 
-export const increaseBalance = async (req: Request, res: Response) => {
+export const increaseBalance = async (req: AuthRequest, res: Response) => {
+  const senderId = req.userToken?.userId
   const { userEmail, amount, coinSymbol } = req.body;
 
   try {
@@ -100,7 +102,8 @@ export const increaseBalance = async (req: Request, res: Response) => {
 
     // create new transaction record
     await Transaction.create({
-      userId: user.userId,
+      senderId: senderId,
+      recipientId: user.userId,
       coinId: coin.coinId,
       amount: amount,
       type: TransactionType.INCREASE,
@@ -113,7 +116,8 @@ export const increaseBalance = async (req: Request, res: Response) => {
   }
 };
 
-export const decreaseBalance = async (req: Request, res: Response) => {
+export const decreaseBalance = async (req: AuthRequest, res: Response) => {
+  const senderId = req.userToken?.userId
   const { userEmail, amount, coinSymbol } = req.body;
 
   try {
@@ -153,7 +157,8 @@ export const decreaseBalance = async (req: Request, res: Response) => {
 
       // create new transaction record
       await Transaction.create({
-        userId: user.userId,
+        senderId: senderId,
+        recipientId: user.userId,
         coinId: coin.coinId,
         amount: amount,
         type: TransactionType.DECREASE,
