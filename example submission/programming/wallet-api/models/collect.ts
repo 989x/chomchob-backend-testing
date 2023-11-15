@@ -1,47 +1,45 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../configs/db-sequelize";
 import Coin from "./coin";
-import Collect from "./collect";
 
-class Wallet extends Model {
+class Collect extends Model {
+  public collectId!: number;
   public walletId!: number;
-  public currency!: number;
-  public balance!: number;
-  public userId!: number;
+  public quantity!: number;
+  public coinId!: number;
+
+  public readonly Coin?: Coin;
 }
 
-Wallet.init(
+Collect.init(
   {
-    walletId: {
+    collectId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    currency: {
-      type: DataTypes.STRING,
+    walletId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: "USD",
+      primaryKey: true,
     },
-    balance: {
+    quantity: {
       type: DataTypes.FLOAT,
       allowNull: false,
       defaultValue: 0,
     },
-    userId: {
+    coinId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
     },
   },
   {
     sequelize,
-    tableName: "wallets",
+    tableName: "collects",
   }
 );
 
-Wallet.belongsToMany(Coin, {
-  through: Collect,
-  foreignKey: "walletId",
-  otherKey: "coinId",
-});
+Collect.belongsTo(Coin, { foreignKey: "coinId" });
 
-export default Wallet;
+export default Collect;

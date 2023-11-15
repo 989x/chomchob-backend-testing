@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/user";
-import Wallet from "../models/wallet";
 import Coin from "../models/coin";
+import Collect from "../models/collect";
 
 // ________________________________________ user
 
@@ -25,32 +25,133 @@ export const promoteToAdmin = async (req: Request, res: Response) => {
   }
 };
 
-// ________________________________________ coin
+// ________________________________________ wallet
 
 export const getTotalBalance = async (req: Request, res: Response) => {
   try {
-    // retrieve all wallets with associated coins
-    const wallets = await Wallet.findAll({
-      include: [{ model: Coin, attributes: ["exchangeRate"] }],
+    // find all collections with associated coins
+    const collections = await Collect.findAll({
+      include: Coin,
     });
 
-    // calculate total balance considering exchange rates
-    const totalBalance = wallets.reduce((acc, wallet) => {
-      // check wallet has associated coin
-      if (wallet.coin) {
-        return acc + wallet.balance * wallet.coin.exchangeRate;
-      } else {
-        console.warn(`Wallet with ID ${wallet.walletId} has no associated coin.`);
-        return acc;
-      }
-    }, 0);
+    // calculate the total balance for each coin
+    const totalBalances = collections.reduce((acc, collection) => {
+      const coinSymbol = collection.Coin?.getDataValue("symbol");
+      const quantity = collection.getDataValue("quantity");
 
-    return res.status(200).json({ totalBalance });
+      if (coinSymbol && quantity !== undefined) {
+        if (!acc[coinSymbol]) {
+          acc[coinSymbol] = 0;
+        }
+        acc[coinSymbol] += quantity;
+      }
+
+      return acc;
+    }, {} as Record<string, number>);
+
+    return res.status(200).json({ totalBalances });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Internal Server Error" });
+    console.error("Error getting total balance:", error);
+    return res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const increaseBalance = async (req: Request, res: Response) => {
+  const { userEmail, amount, coinSymbol } = req.body;
+
+  try {
+    if (!userEmail || !amount || !coinSymbol) {
+      return res.status(400).json({ error: "Missing parameters" });
+    }
+
+    // find user with email
+    const user = await User.findOne({ where: { email: userEmail } });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // find coin with symbol
+    const coin = await Coin.findOne({ where: { symbol: coinSymbol } });
+
+    if (!coin) {
+      return res.status(404).json({ error: "Coin not found" });
+    }
+
+    // check if collection for user and coin already exists
+    const existingCollection = await Collect.findOne({
+      where: { walletId: user.userId, coinId: coin.coinId },
+    });
+
+    if (existingCollection) {
+      // update quantity if collection already exists
+      existingCollection.quantity += amount;
+      await existingCollection.save();
+    } else {
+      // create new collection if it doesn't exist
+      await Collect.create({
+        walletId: user.userId,
+        quantity: amount,
+        coinId: coin.coinId,
+      });
+    }
+
+    return res.status(200).json({ message: "Balance increased successfully" });
+  } catch (error) {
+    console.error("Error increasing balance:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const decreaseBalance = async (req: Request, res: Response) => {
+  const { userEmail, amount, coinSymbol } = req.body;
+
+  try {
+    if (!userEmail || !amount || !coinSymbol) {
+      return res.status(400).json({ error: "Missing parameters" });
+    }
+
+    // find user with email
+    const user = await User.findOne({ where: { email: userEmail } });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // find coin with symbol
+    const coin = await Coin.findOne({ where: { symbol: coinSymbol } });
+
+    if (!coin) {
+      return res.status(404).json({ error: "Coin not found" });
+    }
+
+    // check if collection for user and coin already exists
+    const existingCollection = await Collect.findOne({
+      where: { walletId: user.userId, coinId: coin.coinId },
+    });
+
+    if (existingCollection) {
+      // update quantity by subtracting specified amount
+      existingCollection.quantity -= amount;
+
+      // check if resulting quantity is non-negative
+      if (existingCollection.quantity < 0) {
+        return res.status(400).json({ error: "Insufficient balance" });
+      }
+
+      await existingCollection.save();
+    } else {
+      return res.status(400).json({ error: "No existing collection found" });
+    }
+
+    return res.status(200).json({ message: "Balance decreased successfully" });
+  } catch (error) {
+    console.error("Error decreasing balance:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// ________________________________________ coin
 
 export const addCryptoCurrency = async (req: Request, res: Response) => {
   try {
