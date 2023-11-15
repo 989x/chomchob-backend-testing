@@ -5,6 +5,7 @@ import adminRoutes from "./routes/admin";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/user";
 import manageRoutes from "./routes/manage";
+import { allSeedFunctions } from "./utils/seed";
 
 const app = express();
 const port = 5000;
@@ -15,6 +16,12 @@ async function startServer() {
   try {
     await sequelize.sync()
     console.log("Database synchronized");
+
+    // mocking seed data and call all functions
+    for (const seedFunction of allSeedFunctions) {
+      await seedFunction();
+    }
+
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     })
