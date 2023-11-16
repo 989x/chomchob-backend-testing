@@ -177,9 +177,9 @@ export const decreaseBalance = async (req: AuthRequest, res: Response) => {
 // ________________________________________ coin
 
 export const addCryptoCurrency = async (req: Request, res: Response) => {
+  const { symbol, name, exchangeRate } = req.body;
+  
   try {
-    const { symbol, name, exchangeRate } = req.body;
-
     // check cryptocurrency with symbol already exists
     const existingCoin = await Coin.findOne({ where: { symbol } });
     if (existingCoin) {

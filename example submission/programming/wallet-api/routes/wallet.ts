@@ -2,7 +2,7 @@ import express from "express";
 import {
   getAllWallets,
   getWalletById,
-  // transferDifferentCurrency,
+  transferDifferentCurrency,
   transferSameCurrency,
 } from "../controllers/wallet";
 import { userAccess } from "../middlewares/checkAccess";
@@ -15,6 +15,6 @@ router.get("/wallet", verifyToken, userAccess, getAllWallets);
 router.get("/wallet/:walletId", verifyToken, userAccess, getWalletById);
 // transfer
 router.post("/wallet/transfer-same-currency", verifyToken, userAccess, transferSameCurrency);
-// router.post("/wallet/transfer-different-currency", verifyToken, userAccess, transferDifferentCurrency);
+router.post("/wallet/transfer-different-currency", verifyToken, userAccess, transferDifferentCurrency);
 
 export default router;

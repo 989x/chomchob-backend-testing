@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Wallet from '../models/wallet';
+import Coin from '../models/coin';
 import Collect from '../models/collect';
 import Transaction from '../models/transaction';
 import { TransactionType } from "../utils/types";
@@ -61,18 +62,19 @@ export const transferSameCurrency = async (req: Request, res: Response) => {
       where: { walletId: receiverWalletId, coinId },
     });
 
-    // if coin doesn't exist in receiver wallet, create it
+    // create it, if coin doesn't exist in receiver wallet 
     if (!receiverCoin) {
       receiverCoin = await Collect.create({
         walletId: receiverWalletId,
-        coinId,
-        quantity: 0,
+        coinId: coinId,
+        quantity: quantity,
       });
     }
 
     // update receiver wallet's coin quantity
     await receiverCoin.increment("quantity", { by: quantity });
 
+    // create transaction record
     await Transaction.create({
       senderId: senderWalletId,
       recipientId: receiverWalletId,
@@ -86,4 +88,8 @@ export const transferSameCurrency = async (req: Request, res: Response) => {
     console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
+};
+
+export const transferDifferentCurrency = async (req: Request, res: Response) => {
+  const { senderWalletId, receiverWalletId, senderCoinId, receiverCoinId, quantity } = req.body;
 };

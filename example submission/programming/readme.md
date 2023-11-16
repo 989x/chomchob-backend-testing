@@ -13,11 +13,19 @@ pnpm install
 pnpm dev 
 ```
 
-### Admin Login
+### Accessing the Application
 
-Use the following credentials to log in as an administrator
-- Email: admin@example.com
-- Password: admin123
+`Admin Credentials`
+
+Use the following credentials to log in as an admin:
+- `Email:` admin@example.com
+- `Password:` admin123
+
+`User Credentials`
+
+To log in as a user, use the following credentials:
+- `Email:` user1@example.com
+- `Password:` user1
 
 ### Installation
 
