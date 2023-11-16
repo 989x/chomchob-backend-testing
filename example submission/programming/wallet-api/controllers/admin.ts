@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import User from "../models/user";
 import Coin from "../models/coin";
 import Collect from "../models/collect";
-import Transaction from "../models/transaction"; 
 import { AuthRequest } from "../middlewares/accessToken";
 import { TransactionType } from "../utils/types";
+import { createTransaction } from "../utils/transaction";
 
 // ________________________________________ user
 
@@ -60,7 +60,7 @@ export const getTotalBalance = async (req: Request, res: Response) => {
 };
 
 export const increaseBalance = async (req: AuthRequest, res: Response) => {
-  const senderId = req.userToken?.userId
+  const senderId = req.userToken?.userId;
   const { userEmail, amount, coinSymbol } = req.body;
 
   try {
@@ -101,13 +101,13 @@ export const increaseBalance = async (req: AuthRequest, res: Response) => {
     }
 
     // create new transaction record
-    await Transaction.create({
-      senderId: senderId,
-      recipientId: user.userId,
-      coinId: coin.coinId,
-      amount: amount,
-      type: TransactionType.INCREASE,
-    });
+    await createTransaction(
+      senderId,
+      user.userId,
+      coin.coinId,
+      amount,
+      TransactionType.INCREASE
+    );
 
     return res.status(200).json({ message: "Balance increased successfully" });
   } catch (error) {
@@ -117,7 +117,7 @@ export const increaseBalance = async (req: AuthRequest, res: Response) => {
 };
 
 export const decreaseBalance = async (req: AuthRequest, res: Response) => {
-  const senderId = req.userToken?.userId
+  const senderId = req.userToken?.userId;
   const { userEmail, amount, coinSymbol } = req.body;
 
   try {
@@ -156,13 +156,13 @@ export const decreaseBalance = async (req: AuthRequest, res: Response) => {
       await existingCollection.save();
 
       // create new transaction record
-      await Transaction.create({
-        senderId: senderId,
-        recipientId: user.userId,
-        coinId: coin.coinId,
-        amount: amount,
-        type: TransactionType.DECREASE,
-      });
+      await createTransaction(
+        senderId,
+        user.userId,
+        coin.coinId,
+        amount,
+        TransactionType.DECREASE
+      );
     } else {
       return res.status(400).json({ error: "No existing collection found" });
     }
@@ -178,7 +178,7 @@ export const decreaseBalance = async (req: AuthRequest, res: Response) => {
 
 export const addCryptoCurrency = async (req: Request, res: Response) => {
   const { symbol, name, exchangeRate } = req.body;
-  
+
   try {
     // check cryptocurrency with symbol already exists
     const existingCoin = await Coin.findOne({ where: { symbol } });
