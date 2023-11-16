@@ -4,6 +4,7 @@ import Coin from "../models/coin";
 import Collect from "../models/collect";
 import { TransactionType } from "../utils/types";
 import { createTransaction } from "../utils/transaction";
+import { sendCoinsTransferResponse } from "../utils/response";
 
 export const getAllWallets = async (req: Request, res: Response) => {
   try {
@@ -92,21 +93,16 @@ export const transferSameCurrency = async (req: Request, res: Response) => {
       TransactionType.SAME_CURRENCY_TRANSFER
     );
 
-    return res.status(200).json({
-      message: "Coins transferred successfully.",
-      updatedCoins: {
-        sender: {
-          walletId: senderWalletId,
-          coinId,
-          quantity: updatedSenderCoin?.quantity || 0,
-        },
-        receiver: {
-          walletId: receiverWalletId,
-          coinId,
-          quantity: updatedReceiverCoin?.quantity || 0,
-        },
-      },
-    });
+    sendCoinsTransferResponse(
+      res,
+      "Coins transferred successfully.",
+      senderWalletId,
+      receiverWalletId,
+      coinId,
+      coinId, 
+      updatedSenderCoin?.quantity,
+      updatedReceiverCoin?.quantity
+    );
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });
@@ -122,9 +118,7 @@ export const transferDifferentCurrency = async (req: Request, res: Response) => 
     const receiverWallet = await Wallet.findByPk(receiverWalletId);
 
     if (!senderWallet || !receiverWallet) {
-      return res
-        .status(404)
-        .json({ error: "Sender or receiver wallet not found." });
+      return res.status(404).json({ error: "Sender or receiver wallet not found." });
     }
 
     // check coins exist in sender and receiver wallets
@@ -179,21 +173,16 @@ export const transferDifferentCurrency = async (req: Request, res: Response) => 
       TransactionType.DIFFERENT_CURRENCY_TRANSFER
     );
 
-    return res.status(200).json({
-      message: "Coins transferred successfully.",
-      updatedCoins: {
-        sender: {
-          walletId: senderWalletId,
-          coinId: senderCoinId,
-          quantity: updatedSenderCoin?.quantity || 0,
-        },
-        receiver: {
-          walletId: receiverWalletId,
-          coinId: receiverCoinId,
-          quantity: updatedReceiverCoin?.quantity || 0,
-        },
-      },
-    });
+    sendCoinsTransferResponse(
+      res,
+      "Coins transferred successfully.",
+      senderWalletId,
+      receiverWalletId,
+      senderCoinId,
+      receiverCoinId,
+      updatedSenderCoin?.quantity,
+      updatedReceiverCoin?.quantity
+    );
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });

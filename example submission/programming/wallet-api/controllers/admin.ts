@@ -5,6 +5,7 @@ import Collect from "../models/collect";
 import { AuthRequest } from "../middlewares/accessToken";
 import { TransactionType } from "../utils/types";
 import { createTransaction } from "../utils/transaction";
+import { sendDecreaseBalanceResponse, sendIncreaseBalanceResponse } from "../utils/response";
 
 // ________________________________________ user
 
@@ -109,7 +110,11 @@ export const increaseBalance = async (req: AuthRequest, res: Response) => {
       TransactionType.INCREASE
     );
 
-    return res.status(200).json({ message: "Balance increased successfully" });
+    sendIncreaseBalanceResponse(res, "Balance increased successfully", {
+      userId: user.userId,
+      coinId: coin.coinId,
+      quantity: existingCollection ? existingCollection.quantity : amount
+    });
   } catch (error) {
     console.error("Error increasing balance:", error);
     return res.status(500).json({ error: "Internal server error" });
@@ -163,11 +168,15 @@ export const decreaseBalance = async (req: AuthRequest, res: Response) => {
         amount,
         TransactionType.DECREASE
       );
+
+      sendDecreaseBalanceResponse(res, "Balance decreased successfully", {
+        userId: user.userId,
+        coinId: coin.coinId,
+        quantity: existingCollection ? existingCollection.quantity : amount
+      });
     } else {
       return res.status(400).json({ error: "No existing collection found" });
     }
-
-    return res.status(200).json({ message: "Balance decreased successfully" });
   } catch (error) {
     console.error("Error decreasing balance:", error);
     return res.status(500).json({ error: "Internal server error" });
