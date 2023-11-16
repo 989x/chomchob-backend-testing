@@ -1,5 +1,11 @@
 # Wallet-API Documentation
 
+### Quick Start
+
+To quickly run the project, utilize the provided default information in the `utils/seed.ts` file. This file contains essential details for accessing the application, as described in the "Accessing the Application" section below.
+
+Choose between `pnpm` or `npm` for package management both options offer the same functionality. However, for faster installations, we recommend using `pnpm`.
+
 ## Setup
 
 Start with Docker
