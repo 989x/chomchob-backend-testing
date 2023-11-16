@@ -3,12 +3,13 @@ import jwt from "jsonwebtoken";
 import { UserRole } from "../utils/types";
 import { JWT_SECRET } from "../configs/secrets";
 
-export function generateToken(user: any) {
+export function generateToken(user: any, walletId: number) {
   const payload = {
     userId: user.userId,
     username: user.username,
     email: user.email,
     role: user.role,
+    walletId: walletId,
   };
 
   const expiresIn = "23h";
@@ -22,6 +23,7 @@ export interface AuthRequest extends Request {
     username?: string;
     email?: string;
     role?: UserRole;
+    walletId?: number; 
   };
 }
 
@@ -29,9 +31,7 @@ export const verifyToken = (req: AuthRequest, res: Response, next: NextFunction)
   let token = req.header("Authorization");
 
   if (!token) {
-    return res
-      .status(401)
-      .json({ message: "Access denied. No token provided." });
+    return res.status(401).json({ message: "Access denied. No token provided." });
   }
 
   token = token.split(" ")[1];
@@ -44,6 +44,7 @@ export const verifyToken = (req: AuthRequest, res: Response, next: NextFunction)
       username: decoded.username,
       email: decoded.email,
       role: decoded.role,
+      walletId: decoded.walletId,
     };
 
     next();

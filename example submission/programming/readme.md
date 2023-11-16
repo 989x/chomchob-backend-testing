@@ -1,6 +1,6 @@
-## Wallet-API Documentation
+# Wallet-API Documentation
 
-### Setup
+## Setup
 
 Start with Docker
 ```bash
@@ -13,21 +13,37 @@ pnpm install
 pnpm dev 
 ```
 
-### Accessing the Application
+## Accessing the Application
 
-`Admin Credentials`
+### Admin Credentials
 
-Use the following credentials to log in as an admin:
+Use the following credentials to log in as an admin
 - `Email:` admin@example.com
 - `Password:` admin123
 
-`User Credentials`
+### User Credentials
 
-To log in as a user, use the following credentials:
+To log in as a user, use the following credentials
 - `Email:` user1@example.com
 - `Password:` user1
 
-### Installation
+## Security System
+
+### Authentication Middleware
+
+The application utilizes a token-based authentication system. Two middleware functions are implemented
+
+- `verifyToken:` This ensures the validity of the authentication token.
+- `adminAccess:` Grants access to admin functionalities.
+- `userAccess:` Grants access to user functionalities.
+
+### Request Validation Middleware
+
+limitParams
+
+The `limitParams` function is implemented in middlewares/checkRequest.ts. It serves as a request middleware to limit and validate parameters in incoming requests. This ensures that the API handles requests with appropriate parameters, enhancing security and preventing potential issues.
+
+## Installation
 
 Initialize the project
 ```bash

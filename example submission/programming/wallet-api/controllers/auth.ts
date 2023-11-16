@@ -50,7 +50,7 @@ export const login = async (req: Request, res: Response) => {
 
   try {
     const user = await User.findOne({ where: { email } });
-
+    
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
@@ -61,8 +61,16 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
+    const wallet = await Wallet.findOne({ where: { userId: user.userId } });
+
+    if (!wallet) {
+      return res.status(401).json({ message: "User has no associated wallet" });
+    }
+
+    const walletId = wallet.walletId;
+
     // create accessToken
-    const token = generateToken(user);
+    const token = generateToken(user, walletId);
 
     res.status(200).json({ token, userId: user.userId });
   } catch (error) {

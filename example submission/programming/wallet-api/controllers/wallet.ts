@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Wallet from "../models/wallet";
 import Coin from "../models/coin";
 import Collect from "../models/collect";
+import { AuthRequest } from "../middlewares/accessToken";
 import { TransactionType } from "../utils/types";
 import { createTransaction } from "../utils/transaction";
 import { sendCoinsTransferResponse } from "../utils/response";
@@ -34,8 +35,13 @@ export const getWalletById = async (req: Request, res: Response) => {
   }
 };
 
-export const transferSameCurrency = async (req: Request, res: Response) => {
-  const { senderWalletId, receiverWalletId, coinId, quantity } = req.body;
+export const transferSameCurrency = async (req: AuthRequest, res: Response) => {
+  const senderWalletId = req.userToken?.walletId;
+  const { receiverWalletId, coinId, quantity } = req.body;
+
+  if (senderWalletId === undefined) {
+    return res.status(401).json({ error: "Sender wallet not specified." });
+  }
 
   try {
     // check sender and receiver wallets exist
@@ -109,8 +115,13 @@ export const transferSameCurrency = async (req: Request, res: Response) => {
   }
 };
 
-export const transferDifferentCurrency = async (req: Request, res: Response) => {
-  const { senderWalletId, receiverWalletId, senderCoinId, receiverCoinId, quantity } = req.body;
+export const transferDifferentCurrency = async (req: AuthRequest, res: Response) => {
+  const senderWalletId = req.userToken?.walletId;
+  const { receiverWalletId, senderCoinId, receiverCoinId, quantity } = req.body;
+
+  if (senderWalletId === undefined) {
+    return res.status(401).json({ error: "Sender wallet not specified." });
+  }
 
   try {
     // check sender and receiver wallets exist
