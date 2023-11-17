@@ -2,19 +2,13 @@ import User from "../models/user";
 import UserCard from "../models/userCard";
 import Item from "../models/item";
 import Purchase from "../models/purchase";
+import Bundle from "../models/bundle";
+import ItemInBundle from "../models/itemInBundle";
 
 const seedData = async (model: any, data: any[]) => {
   try {
     for (const item of data) {
-      const whereCondition: { [key: string]: any } = {};
-      Object.keys(item).forEach((key) => {
-        if (key.endsWith("_id")) {
-          // assuming "_id" is part of primary key fields
-          whereCondition[key] = item[key];
-        }
-      });
-
-      const existingItem = await model.findOne({ where: whereCondition });
+      const existingItem = await model.findOne();
 
       if (!existingItem) {
         await model.create(item);
@@ -49,10 +43,10 @@ export const seedUserCards = async () => {
 export const seedItems = async () => {
   const itemData = [
     {
-      productName: "Item 1",
-      productDetail: "Details for Item 1",
+      productName: "Sword of the Dragon",
+      productDetail: "A legendary sword forged by ancient dragons.",
       salePrice: 100.0,
-      normalPrice: 150.0,
+      normalPrice: 140.0,
       openSaleDate: new Date("2023-01-01"),
       endSaleDate: new Date("2023-01-31"),
       discountPrice: 100.0,
@@ -60,13 +54,13 @@ export const seedItems = async () => {
       discountEndDate: new Date("2023-01-20"),
     },
     {
-      productName: "Item 2",
-      productDetail: "Details for Item 2",
-      salePrice: 100.0,
-      normalPrice: 150.0,
+      productName: "Potion of Healing",
+      productDetail: "Restores health instantly.",
+      salePrice: 220.0,
+      normalPrice: 260.0,
       openSaleDate: new Date("2023-02-01"),
       endSaleDate: new Date("2023-02-28"),
-      discountPrice: 100.0,
+      discountPrice: 200.0,
       discountStartDate: new Date("2023-02-15"),
       discountEndDate: new Date("2023-02-20"),
     },
@@ -96,4 +90,45 @@ export const seedPurchases = async () => {
   await seedData(Purchase, purchaseData);
 };
 
-export const allSeedFunctions = [seedUsers, seedUserCards, seedItems, seedPurchases];
+export const seedBundles = async () => {
+  const bundleData = [
+    {
+      bundleName: "Character Skin Set Bundle",
+      bundleDescription: "A special bundle with multiple character skins",
+      bundlePrice: 19.99,
+    },
+    {
+      bundleName: "Gachapon Box Bundle",
+      bundleDescription: "A bundle containing five gachapon boxes",
+      bundlePrice: 29.99,
+    },
+  ];
+
+  await seedData(Bundle, bundleData);
+};
+
+export const seedItemsInBundle = async () => {
+  const itemInBundleData = [
+    {
+      bundleId: 1,
+      itemId: 1,
+      quantity: 2,
+    },
+    {
+      bundleId: 2,
+      itemId: 2,
+      quantity: 5,
+    },
+  ];
+
+  await seedData(ItemInBundle, itemInBundleData);
+};
+
+export const allSeedFunctions = [
+  seedUsers,
+  seedUserCards,
+  seedItems,
+  seedPurchases,
+  seedBundles,
+  seedItemsInBundle,
+];
