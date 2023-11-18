@@ -1,0 +1,1899 @@
+{
+  "collection": {
+    "info": {
+      "_postman_id": "fe1072cd-b74c-468b-819a-25231026e895",
+      "name": "Testing",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "updatedAt": "2023-11-16T09:28:59.000Z",
+      "uid": "14013075-fe1072cd-b74c-468b-819a-25231026e895"
+    },
+    "item": [
+      {
+        "name": "wallet-api",
+        "item": [
+          {
+            "name": "admin",
+            "item": [
+              {
+                "name": "wallet",
+                "item": [
+                  {
+                    "name": "getTotalBalance",
+                    "id": "c15aa777-f025-41aa-807c-4d29c432fa54",
+                    "protocolProfileBehavior": {
+                      "disableBodyPruning": true
+                    },
+                    "request": {
+                      "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/admin/total-balance",
+                        "host": ["{{localhost}}"],
+                        "path": ["admin", "total-balance"]
+                      }
+                    },
+                    "response": [
+                      {
+                        "id": "fec27302-40fa-4c5e-80eb-bcb7ecd07b20",
+                        "name": "getTotalBalance",
+                        "originalRequest": {
+                          "method": "GET",
+                          "header": [],
+                          "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                              "raw": {
+                                "language": "json"
+                              }
+                            }
+                          },
+                          "url": {
+                            "raw": "{{localhost}}/admin/total-balance",
+                            "host": ["{{localhost}}"],
+                            "path": ["admin", "total-balance"]
+                          }
+                        },
+                        "status": "OK",
+                        "code": 200,
+                        "_postman_previewlanguage": "json",
+                        "header": [
+                          {
+                            "key": "X-Powered-By",
+                            "value": "Express"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json; charset=utf-8"
+                          },
+                          {
+                            "key": "Content-Length",
+                            "value": "56"
+                          },
+                          {
+                            "key": "ETag",
+                            "value": "W/\"38-Tu8zZkSWVhr9ZSFOZuh1PSydFMk\""
+                          },
+                          {
+                            "key": "Date",
+                            "value": "Thu, 16 Nov 2023 11:39:13 GMT"
+                          },
+                          {
+                            "key": "Connection",
+                            "value": "keep-alive"
+                          },
+                          {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5"
+                          }
+                        ],
+                        "cookie": [],
+                        "responseTime": null,
+                        "body": "{\n    \"totalBalances\": {\n        \"BTC\": 1141.021,\n        \"ETH\": 100,\n        \"LTC\": 39770\n    }\n}",
+                        "uid": "14013075-fec27302-40fa-4c5e-80eb-bcb7ecd07b20"
+                      }
+                    ],
+                    "uid": "14013075-c15aa777-f025-41aa-807c-4d29c432fa54"
+                  },
+                  {
+                    "name": "increaseBalance",
+                    "id": "9b0c90dd-3059-4fcb-9420-cc15d995934f",
+                    "protocolProfileBehavior": {
+                      "disableBodyPruning": true
+                    },
+                    "request": {
+                      "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n    \"userEmail\": \"user1@example.com\",\n    \"amount\": 100,\n    \"coinSymbol\": \"BTC\"\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/admin/increase-balance",
+                        "host": ["{{localhost}}"],
+                        "path": ["admin", "increase-balance"]
+                      }
+                    },
+                    "response": [
+                      {
+                        "id": "f90ed157-9752-45de-93fa-22c410aa2c39",
+                        "name": "increaseBalance",
+                        "originalRequest": {
+                          "method": "POST",
+                          "header": [],
+                          "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"userEmail\": \"user1@example.com\",\n    \"amount\": 100,\n    \"coinSymbol\": \"BTC\"\n}",
+                            "options": {
+                              "raw": {
+                                "language": "json"
+                              }
+                            }
+                          },
+                          "url": {
+                            "raw": "{{localhost}}/admin/increase-balance",
+                            "host": ["{{localhost}}"],
+                            "path": ["admin", "increase-balance"]
+                          }
+                        },
+                        "status": "OK",
+                        "code": 200,
+                        "_postman_previewlanguage": "json",
+                        "header": [
+                          {
+                            "key": "X-Powered-By",
+                            "value": "Express"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json; charset=utf-8"
+                          },
+                          {
+                            "key": "Content-Length",
+                            "value": "101"
+                          },
+                          {
+                            "key": "ETag",
+                            "value": "W/\"65-3LreQAOafRxUH29yfW5KUYTgHvQ\""
+                          },
+                          {
+                            "key": "Date",
+                            "value": "Thu, 16 Nov 2023 11:39:21 GMT"
+                          },
+                          {
+                            "key": "Connection",
+                            "value": "keep-alive"
+                          },
+                          {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5"
+                          }
+                        ],
+                        "cookie": [],
+                        "responseTime": null,
+                        "body": "{\n    \"message\": \"Balance increased successfully\",\n    \"updatedBalance\": {\n        \"userId\": 2,\n        \"coinId\": 1,\n        \"quantity\": 1123\n    }\n}",
+                        "uid": "14013075-f90ed157-9752-45de-93fa-22c410aa2c39"
+                      }
+                    ],
+                    "uid": "14013075-9b0c90dd-3059-4fcb-9420-cc15d995934f"
+                  },
+                  {
+                    "name": "decreaseBalance",
+                    "id": "4862b107-0dbf-474e-a3a5-f90ea09c3981",
+                    "protocolProfileBehavior": {
+                      "disableBodyPruning": true
+                    },
+                    "request": {
+                      "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n    \"userEmail\": \"user1@example.com\",\n    \"amount\": 3,\n    \"coinSymbol\": \"BTC\"\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/admin/decrease-balance",
+                        "host": ["{{localhost}}"],
+                        "path": ["admin", "decrease-balance"]
+                      }
+                    },
+                    "response": [
+                      {
+                        "id": "1245ee98-7277-4658-a075-3f5f328d8327",
+                        "name": "decreaseBalance",
+                        "originalRequest": {
+                          "method": "POST",
+                          "header": [],
+                          "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"userEmail\": \"user1@example.com\",\n    \"amount\": 3,\n    \"coinSymbol\": \"BTC\"\n}",
+                            "options": {
+                              "raw": {
+                                "language": "json"
+                              }
+                            }
+                          },
+                          "url": {
+                            "raw": "{{localhost}}/admin/decrease-balance",
+                            "host": ["{{localhost}}"],
+                            "path": ["admin", "decrease-balance"]
+                          }
+                        },
+                        "status": "OK",
+                        "code": 200,
+                        "_postman_previewlanguage": "json",
+                        "header": [
+                          {
+                            "key": "X-Powered-By",
+                            "value": "Express"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json; charset=utf-8"
+                          },
+                          {
+                            "key": "Content-Length",
+                            "value": "101"
+                          },
+                          {
+                            "key": "ETag",
+                            "value": "W/\"65-+zMg6pV/FIUlcf5H09jcKUqPmwU\""
+                          },
+                          {
+                            "key": "Date",
+                            "value": "Thu, 16 Nov 2023 11:39:26 GMT"
+                          },
+                          {
+                            "key": "Connection",
+                            "value": "keep-alive"
+                          },
+                          {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5"
+                          }
+                        ],
+                        "cookie": [],
+                        "responseTime": null,
+                        "body": "{\n    \"message\": \"Balance decreased successfully\",\n    \"updatedBalance\": {\n        \"userId\": 2,\n        \"coinId\": 1,\n        \"quantity\": 1120\n    }\n}",
+                        "uid": "14013075-1245ee98-7277-4658-a075-3f5f328d8327"
+                      }
+                    ],
+                    "uid": "14013075-4862b107-0dbf-474e-a3a5-f90ea09c3981"
+                  }
+                ],
+                "id": "76d4fd80-2d69-478f-9fa3-3dda6891650c",
+                "uid": "14013075-76d4fd80-2d69-478f-9fa3-3dda6891650c"
+              },
+              {
+                "name": "coin",
+                "item": [
+                  {
+                    "name": "addCryptoCurrency",
+                    "id": "95ea6b90-a826-4f23-81c1-de167c0ba3b6",
+                    "protocolProfileBehavior": {
+                      "disableBodyPruning": true
+                    },
+                    "request": {
+                      "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n  \"symbol\": \"XRP\",\n  \"name\": \"Ripple\",\n  \"exchangeRate\": 2.5\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/admin/add-cryptocurrency",
+                        "host": ["{{localhost}}"],
+                        "path": ["admin", "add-cryptocurrency"]
+                      }
+                    },
+                    "response": [
+                      {
+                        "id": "b1c914b9-c5ef-42d2-b03c-a07c36ed72f8",
+                        "name": "addCryptoCurrency",
+                        "originalRequest": {
+                          "method": "POST",
+                          "header": [],
+                          "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"symbol\": \"XRP\",\n  \"name\": \"Ripple\",\n  \"exchangeRate\": 2.5\n}",
+                            "options": {
+                              "raw": {
+                                "language": "json"
+                              }
+                            }
+                          },
+                          "url": {
+                            "raw": "{{localhost}}/admin/add-cryptocurrency",
+                            "host": ["{{localhost}}"],
+                            "path": ["admin", "add-cryptocurrency"]
+                          }
+                        },
+                        "status": "Created",
+                        "code": 201,
+                        "_postman_previewlanguage": "json",
+                        "header": [
+                          {
+                            "key": "X-Powered-By",
+                            "value": "Express"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json; charset=utf-8"
+                          },
+                          {
+                            "key": "Content-Length",
+                            "value": "140"
+                          },
+                          {
+                            "key": "ETag",
+                            "value": "W/\"8c-1dF8tt/7ZtTsYEztjiDwIIVUbkA\""
+                          },
+                          {
+                            "key": "Date",
+                            "value": "Thu, 16 Nov 2023 11:39:44 GMT"
+                          },
+                          {
+                            "key": "Connection",
+                            "value": "keep-alive"
+                          },
+                          {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5"
+                          }
+                        ],
+                        "cookie": [],
+                        "responseTime": null,
+                        "body": "{\n    \"coinId\": 4,\n    \"symbol\": \"XRP\",\n    \"name\": \"Ripple\",\n    \"exchangeRate\": 2.5,\n    \"updatedAt\": \"2023-11-16T11:39:44.128Z\",\n    \"createdAt\": \"2023-11-16T11:39:44.128Z\"\n}",
+                        "uid": "14013075-b1c914b9-c5ef-42d2-b03c-a07c36ed72f8"
+                      }
+                    ],
+                    "uid": "14013075-95ea6b90-a826-4f23-81c1-de167c0ba3b6"
+                  },
+                  {
+                    "name": "updateExchangeRate",
+                    "id": "5ac13799-7f0a-4550-902b-69882d39a93a",
+                    "protocolProfileBehavior": {
+                      "disableBodyPruning": true
+                    },
+                    "request": {
+                      "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "string"
+                          }
+                        ]
+                      },
+                      "method": "PUT",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n  \"symbol\": \"XRP\",\n  \"exchangeRate\": 3.0\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/admin/update-exchange-rate",
+                        "host": ["{{localhost}}"],
+                        "path": ["admin", "update-exchange-rate"]
+                      }
+                    },
+                    "response": [
+                      {
+                        "id": "30705e22-833f-434a-b1a6-cebd064c0910",
+                        "name": "updateExchangeRate",
+                        "originalRequest": {
+                          "method": "PUT",
+                          "header": [],
+                          "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"symbol\": \"XRP\",\n  \"exchangeRate\": 3.0\n}",
+                            "options": {
+                              "raw": {
+                                "language": "json"
+                              }
+                            }
+                          },
+                          "url": {
+                            "raw": "{{localhost}}/admin/update-exchange-rate",
+                            "host": ["{{localhost}}"],
+                            "path": ["admin", "update-exchange-rate"]
+                          }
+                        },
+                        "status": "OK",
+                        "code": 200,
+                        "_postman_previewlanguage": "json",
+                        "header": [
+                          {
+                            "key": "X-Powered-By",
+                            "value": "Express"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json; charset=utf-8"
+                          },
+                          {
+                            "key": "Content-Length",
+                            "value": "138"
+                          },
+                          {
+                            "key": "ETag",
+                            "value": "W/\"8a-oZ4aVWdORJi01hD3aTWfPblWqMY\""
+                          },
+                          {
+                            "key": "Date",
+                            "value": "Thu, 16 Nov 2023 11:39:49 GMT"
+                          },
+                          {
+                            "key": "Connection",
+                            "value": "keep-alive"
+                          },
+                          {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5"
+                          }
+                        ],
+                        "cookie": [],
+                        "responseTime": null,
+                        "body": "{\n    \"coinId\": 4,\n    \"symbol\": \"XRP\",\n    \"name\": \"Ripple\",\n    \"exchangeRate\": 3,\n    \"createdAt\": \"2023-11-16T11:39:44.000Z\",\n    \"updatedAt\": \"2023-11-16T11:39:49.703Z\"\n}",
+                        "uid": "14013075-30705e22-833f-434a-b1a6-cebd064c0910"
+                      }
+                    ],
+                    "uid": "14013075-5ac13799-7f0a-4550-902b-69882d39a93a"
+                  }
+                ],
+                "id": "40f743d2-ae11-489a-a8bc-9b71b046c53e",
+                "uid": "14013075-40f743d2-ae11-489a-a8bc-9b71b046c53e"
+              },
+              {
+                "name": "promoteToAdmin",
+                "id": "812fe736-9bf1-46a6-b0e6-d28c864df062",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "PUT",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"userId\": 1\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/admin/promote-to-admin",
+                    "host": ["{{localhost}}"],
+                    "path": ["admin", "promote-to-admin"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "a3c7538e-5b13-4758-ab68-87a41165374b",
+                    "name": "promoteToAdmin",
+                    "originalRequest": {
+                      "method": "PUT",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n    \"userId\": 1\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/admin/promote-to-admin",
+                        "host": ["{{localhost}}"],
+                        "path": ["admin", "promote-to-admin"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "49"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"31-duwB/7KM2MGGPWLPjDm3OCphNT4\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:40:04 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"message\": \"User promoted to admin successfully\"\n}",
+                    "uid": "14013075-a3c7538e-5b13-4758-ab68-87a41165374b"
+                  }
+                ],
+                "uid": "14013075-812fe736-9bf1-46a6-b0e6-d28c864df062"
+              }
+            ],
+            "id": "16313623-3f7e-4046-9265-853a23ac13ad",
+            "uid": "14013075-16313623-3f7e-4046-9265-853a23ac13ad"
+          },
+          {
+            "name": "user",
+            "item": [
+              {
+                "name": "register",
+                "id": "ec0e8659-2171-4d61-920d-83160bde7739",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"username\": \"exampleUser\",\n  \"email\": \"example@email.com\",\n  \"password\": \"examplePassword\"\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/auth/register",
+                    "host": ["{{localhost}}"],
+                    "path": ["auth", "register"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "69447dfe-cfb0-4918-a193-268653867897",
+                    "name": "register",
+                    "originalRequest": {
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n  \"username\": \"exampleUser\",\n  \"email\": \"example@email.com\",\n  \"password\": \"examplePassword\"\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/auth/register",
+                        "host": ["{{localhost}}"],
+                        "path": ["auth", "register"]
+                      }
+                    },
+                    "status": "Created",
+                    "code": 201,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "145"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"91-Z0CmDkZu/9MKqYvpXwfQOplx1z4\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:40:34 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"message\": \"Registration successful\",\n    \"user\": {\n        \"userId\": 4,\n        \"email\": \"example@email.com\",\n        \"username\": \"exampleUser\"\n    },\n    \"wallet\": {\n        \"walletId\": 4,\n        \"userId\": 4\n    }\n}",
+                    "uid": "14013075-69447dfe-cfb0-4918-a193-268653867897"
+                  }
+                ],
+                "uid": "14013075-ec0e8659-2171-4d61-920d-83160bde7739"
+              },
+              {
+                "name": "login",
+                "id": "4f387a06-e756-4166-9ff8-8239f931fc6d",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\"\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/auth/login",
+                    "host": ["{{localhost}}"],
+                    "path": ["auth", "login"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "273d7036-39b1-4a06-a7c4-308ce52c9cf6",
+                    "name": "user login",
+                    "originalRequest": {
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n  \"email\": \"user1@example.com\",\n  \"password\": \"password1\"\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/auth/login",
+                        "host": ["{{localhost}}"],
+                        "path": ["auth", "login"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "259"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"103-3MxA/hsClQQn6P4q0wKkto/aO/Q\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Mon, 13 Nov 2023 09:48:31 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiZXhhbXBsZVVzZXIiLCJlbWFpbCI6ImV4YW1wbGVAZW1haWwuY29tIiwicm9sZSI6ImdlbmVyYWwiLCJpYXQiOjE2OTk4Njg5MTEsImV4cCI6MTY5OTk1MTcxMX0.8kttZeeET_ysM-01ktuUJamoXVVA_kAUVkyi0MTYF5Y\",\n    \"userId\": 1\n}",
+                    "uid": "14013075-273d7036-39b1-4a06-a7c4-308ce52c9cf6"
+                  },
+                  {
+                    "id": "cf114b80-eff1-4999-8c44-45796228bb81",
+                    "name": "admin login",
+                    "originalRequest": {
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\"\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/auth/login",
+                        "host": ["{{localhost}}"],
+                        "path": ["auth", "login"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "234"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"ea-HLKqo35XZ5q04DsSu2Rf2UK7Kaw\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Wed, 15 Nov 2023 14:14:41 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMDA1NzY4MSwiZXhwIjoxNzAwMTQwNDgxfQ.qY5HEF3F-8UFgKBVVtuKoeK3rsyV1m9gALv6bnZ1i6g\",\n    \"userId\": 1\n}",
+                    "uid": "14013075-cf114b80-eff1-4999-8c44-45796228bb81"
+                  }
+                ],
+                "uid": "14013075-4f387a06-e756-4166-9ff8-8239f931fc6d"
+              },
+              {
+                "name": "getUsers",
+                "id": "78b6bacb-288a-4022-9952-e7b545af30d5",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/user",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "user"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "dc06a415-b0a7-4fd9-bdf8-75cbf75aa474",
+                    "name": "getUsers",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/user",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "user"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "993"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"3e1-67AeccqgrqxdlNPcG2sqXHsHR/k\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:40:54 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "[\n    {\n        \"userId\": 1,\n        \"role\": \"admin\",\n        \"status\": \"active\",\n        \"email\": \"admin@example.com\",\n        \"username\": \"admin\",\n        \"password\": \"$2b$10$S8JAYNfAJK/kpjE3Vpp0..5ZcASW16CnoLaInwFZXKzF5FTRF.G.W\",\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"userId\": 2,\n        \"role\": \"general\",\n        \"status\": \"active\",\n        \"email\": \"user1@example.com\",\n        \"username\": \"user1\",\n        \"password\": \"$2b$10$/qf.NRFHU09Ddj2s4HEGl.fQECzvfkPmR2xjNb/JPKl14akMnpoSq\",\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"userId\": 3,\n        \"role\": \"general\",\n        \"status\": \"active\",\n        \"email\": \"user2@example.com\",\n        \"username\": \"user2\",\n        \"password\": \"$2b$10$xrNDCEjwAMnTHTOgj0W0FO.jjYZSRKVOhmtrIeE5WSaK0rGMSxOq6\",\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"userId\": 4,\n        \"role\": \"general\",\n        \"status\": \"active\",\n        \"email\": \"example@email.com\",\n        \"username\": \"exampleUser\",\n        \"password\": \"$2b$10$39.C59JJ6HZIQaqHg8qV1e9/OM9izmyj3sZAJ4leB0JfYCnXH3WpW\",\n        \"createdAt\": \"2023-11-16T11:40:34.000Z\",\n        \"updatedAt\": \"2023-11-16T11:40:34.000Z\"\n    }\n]",
+                    "uid": "14013075-dc06a415-b0a7-4fd9-bdf8-75cbf75aa474"
+                  }
+                ],
+                "uid": "14013075-78b6bacb-288a-4022-9952-e7b545af30d5"
+              },
+              {
+                "name": "getUserById",
+                "id": "52471356-6887-45f4-9e74-92145e1cb84f",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/user/1",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "user", "1"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "76a4f7a9-59b4-43b5-bd18-ed9320e861bc",
+                    "name": "getUserById",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/user/1",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "user", "1"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "253"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"fd-lUyaPwYHKcHi4uHceZauait9COs\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:41:07 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"user\": {\n        \"userId\": 1,\n        \"role\": \"admin\",\n        \"status\": \"active\",\n        \"email\": \"admin@example.com\",\n        \"username\": \"admin\",\n        \"password\": \"$2b$10$S8JAYNfAJK/kpjE3Vpp0..5ZcASW16CnoLaInwFZXKzF5FTRF.G.W\",\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    }\n}",
+                    "uid": "14013075-76a4f7a9-59b4-43b5-bd18-ed9320e861bc"
+                  }
+                ],
+                "uid": "14013075-52471356-6887-45f4-9e74-92145e1cb84f"
+              }
+            ],
+            "id": "2b908aa7-1e21-400b-8ecf-236e9157a2d4",
+            "uid": "14013075-2b908aa7-1e21-400b-8ecf-236e9157a2d4"
+          },
+          {
+            "name": "manage",
+            "item": [
+              {
+                "name": "getAllCoins",
+                "id": "9f43f5e3-9774-4dfa-924d-e2e0e119866d",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/coin",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "coin"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "3c3cbc56-701b-4c55-b207-8ea4a39aa160",
+                    "name": "getAllCoins",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/coin",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "coin"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "571"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"23b-3e3a84JQVYEMa0xJNt6xCULnmUc\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:41:25 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "[\n    {\n        \"coinId\": 1,\n        \"symbol\": \"BTC\",\n        \"name\": \"Bitcoin\",\n        \"exchangeRate\": 50000,\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"coinId\": 2,\n        \"symbol\": \"ETH\",\n        \"name\": \"Ethereum\",\n        \"exchangeRate\": 3000,\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"coinId\": 3,\n        \"symbol\": \"LTC\",\n        \"name\": \"Litecoin\",\n        \"exchangeRate\": 150,\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"coinId\": 4,\n        \"symbol\": \"XRP\",\n        \"name\": \"Ripple\",\n        \"exchangeRate\": 3,\n        \"createdAt\": \"2023-11-16T11:39:44.000Z\",\n        \"updatedAt\": \"2023-11-16T11:39:49.000Z\"\n    }\n]",
+                    "uid": "14013075-3c3cbc56-701b-4c55-b207-8ea4a39aa160"
+                  }
+                ],
+                "uid": "14013075-9f43f5e3-9774-4dfa-924d-e2e0e119866d"
+              },
+              {
+                "name": "getCoinById",
+                "id": "0d8d618d-7a16-40b6-aa24-c33a768f9d0c",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/coin/1",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "coin", "1"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "d7c150e1-4a20-4fd1-9c22-301b83e72020",
+                    "name": "getCoinById",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/coin/1",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "coin", "1"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "143"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"8f-kYUHMxBHxHYdvSxy6wlcwYEDGlg\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:41:30 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"coinId\": 1,\n    \"symbol\": \"BTC\",\n    \"name\": \"Bitcoin\",\n    \"exchangeRate\": 50000,\n    \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n    \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n}",
+                    "uid": "14013075-d7c150e1-4a20-4fd1-9c22-301b83e72020"
+                  }
+                ],
+                "uid": "14013075-0d8d618d-7a16-40b6-aa24-c33a768f9d0c"
+              },
+              {
+                "name": "getAllCollects",
+                "id": "5ec20ea1-d5d1-40d9-87ca-edd6ba507750",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/collect",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "collect"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "712d48a7-495b-47be-b1aa-e9bc945c235e",
+                    "name": "getAllCollects",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/collect",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "collect"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "672"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"2a0-5diYjLISzhp7SJuWOwvn/vKul7A\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:41:34 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "[\n    {\n        \"collectId\": 1,\n        \"walletId\": 2,\n        \"quantity\": 1120,\n        \"coinId\": 1,\n        \"createdAt\": \"2023-11-15T14:15:18.000Z\",\n        \"updatedAt\": \"2023-11-16T11:39:26.000Z\"\n    },\n    {\n        \"collectId\": 2,\n        \"walletId\": 2,\n        \"quantity\": 100,\n        \"coinId\": 2,\n        \"createdAt\": \"2023-11-16T04:03:23.000Z\",\n        \"updatedAt\": \"2023-11-16T04:03:23.000Z\"\n    },\n    {\n        \"collectId\": 3,\n        \"walletId\": 2,\n        \"quantity\": 93,\n        \"coinId\": 3,\n        \"createdAt\": \"2023-11-16T04:03:30.000Z\",\n        \"updatedAt\": \"2023-11-16T06:29:40.000Z\"\n    },\n    {\n        \"collectId\": 4,\n        \"walletId\": 3,\n        \"quantity\": 118.021,\n        \"coinId\": 1,\n        \"createdAt\": \"2023-11-16T04:22:31.000Z\",\n        \"updatedAt\": \"2023-11-16T09:29:06.000Z\"\n    },\n    {\n        \"collectId\": 5,\n        \"walletId\": 3,\n        \"quantity\": 39677,\n        \"coinId\": 3,\n        \"createdAt\": \"2023-11-16T04:25:57.000Z\",\n        \"updatedAt\": \"2023-11-16T09:30:16.000Z\"\n    }\n]",
+                    "uid": "14013075-712d48a7-495b-47be-b1aa-e9bc945c235e"
+                  }
+                ],
+                "uid": "14013075-5ec20ea1-d5d1-40d9-87ca-edd6ba507750"
+              },
+              {
+                "name": "getAllTransactions",
+                "id": "ff8f94d5-ed1d-4b7c-8989-da1c8169005e",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/transaction",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "transaction"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "ac63a53a-f973-4228-ac57-38aaf6510ff9",
+                    "name": "getAllTransactions",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/transaction",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "transaction"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "4847"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"12ef-N2UWVjAhM8Q7YONDOBX5yH2+PAQ\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:41:46 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "[\n    {\n        \"transactionId\": 1,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-15T14:18:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:18:22.000Z\"\n    },\n    {\n        \"transactionId\": 2,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T04:03:11.000Z\",\n        \"updatedAt\": \"2023-11-16T04:03:11.000Z\"\n    },\n    {\n        \"transactionId\": 3,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 2,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T04:03:23.000Z\",\n        \"updatedAt\": \"2023-11-16T04:03:23.000Z\"\n    },\n    {\n        \"transactionId\": 4,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 3,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T04:03:30.000Z\",\n        \"updatedAt\": \"2023-11-16T04:03:30.000Z\"\n    },\n    {\n        \"transactionId\": 5,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T05:14:28.000Z\",\n        \"updatedAt\": \"2023-11-16T05:14:28.000Z\"\n    },\n    {\n        \"transactionId\": 6,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T05:14:29.000Z\",\n        \"updatedAt\": \"2023-11-16T05:14:29.000Z\"\n    },\n    {\n        \"transactionId\": 7,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T05:18:58.000Z\",\n        \"updatedAt\": \"2023-11-16T05:18:58.000Z\"\n    },\n    {\n        \"transactionId\": 8,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 21,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T06:35:49.000Z\",\n        \"updatedAt\": \"2023-11-16T06:35:49.000Z\"\n    },\n    {\n        \"transactionId\": 9,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 10,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T07:58:41.000Z\",\n        \"updatedAt\": \"2023-11-16T07:58:41.000Z\"\n    },\n    {\n        \"transactionId\": 10,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:03:10.000Z\",\n        \"updatedAt\": \"2023-11-16T08:03:10.000Z\"\n    },\n    {\n        \"transactionId\": 11,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:20:48.000Z\",\n        \"updatedAt\": \"2023-11-16T08:20:48.000Z\"\n    },\n    {\n        \"transactionId\": 12,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:23:19.000Z\",\n        \"updatedAt\": \"2023-11-16T08:23:19.000Z\"\n    },\n    {\n        \"transactionId\": 13,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:42:45.000Z\",\n        \"updatedAt\": \"2023-11-16T08:42:45.000Z\"\n    },\n    {\n        \"transactionId\": 14,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:43:32.000Z\",\n        \"updatedAt\": \"2023-11-16T08:43:32.000Z\"\n    },\n    {\n        \"transactionId\": 15,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:47:48.000Z\",\n        \"updatedAt\": \"2023-11-16T08:47:48.000Z\"\n    },\n    {\n        \"transactionId\": 16,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"decrease\",\n        \"createdAt\": \"2023-11-16T08:50:30.000Z\",\n        \"updatedAt\": \"2023-11-16T08:50:30.000Z\"\n    },\n    {\n        \"transactionId\": 17,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"decrease\",\n        \"createdAt\": \"2023-11-16T08:51:02.000Z\",\n        \"updatedAt\": \"2023-11-16T08:51:02.000Z\"\n    },\n    {\n        \"transactionId\": 18,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"decrease\",\n        \"createdAt\": \"2023-11-16T08:53:00.000Z\",\n        \"updatedAt\": \"2023-11-16T08:53:00.000Z\"\n    },\n    {\n        \"transactionId\": 19,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"decrease\",\n        \"createdAt\": \"2023-11-16T08:53:01.000Z\",\n        \"updatedAt\": \"2023-11-16T08:53:01.000Z\"\n    },\n    {\n        \"transactionId\": 20,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"decrease\",\n        \"createdAt\": \"2023-11-16T08:53:02.000Z\",\n        \"updatedAt\": \"2023-11-16T08:53:02.000Z\"\n    },\n    {\n        \"transactionId\": 21,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T08:54:41.000Z\",\n        \"updatedAt\": \"2023-11-16T08:54:41.000Z\"\n    },\n    {\n        \"transactionId\": 22,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 10,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T08:54:52.000Z\",\n        \"updatedAt\": \"2023-11-16T08:54:52.000Z\"\n    },\n    {\n        \"transactionId\": 23,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 23,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T08:55:03.000Z\",\n        \"updatedAt\": \"2023-11-16T08:55:03.000Z\"\n    },\n    {\n        \"transactionId\": 24,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 23,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T08:55:05.000Z\",\n        \"updatedAt\": \"2023-11-16T08:55:05.000Z\"\n    },\n    {\n        \"transactionId\": 25,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 23,\n        \"type\": \"same_currency_transfer\",\n        \"createdAt\": \"2023-11-16T09:29:06.000Z\",\n        \"updatedAt\": \"2023-11-16T09:29:06.000Z\"\n    },\n    {\n        \"transactionId\": 26,\n        \"senderId\": 2,\n        \"recipientId\": 3,\n        \"coinId\": 1,\n        \"amount\": 1,\n        \"type\": \"different_currency_transfer\",\n        \"createdAt\": \"2023-11-16T09:30:16.000Z\",\n        \"updatedAt\": \"2023-11-16T09:30:16.000Z\"\n    },\n    {\n        \"transactionId\": 27,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 100,\n        \"type\": \"increase\",\n        \"createdAt\": \"2023-11-16T11:39:21.000Z\",\n        \"updatedAt\": \"2023-11-16T11:39:21.000Z\"\n    },\n    {\n        \"transactionId\": 28,\n        \"senderId\": 1,\n        \"recipientId\": 2,\n        \"coinId\": 1,\n        \"amount\": 3,\n        \"type\": \"decrease\",\n        \"createdAt\": \"2023-11-16T11:39:26.000Z\",\n        \"updatedAt\": \"2023-11-16T11:39:26.000Z\"\n    }\n]",
+                    "uid": "14013075-ac63a53a-f973-4228-ac57-38aaf6510ff9"
+                  }
+                ],
+                "uid": "14013075-ff8f94d5-ed1d-4b7c-8989-da1c8169005e"
+              }
+            ],
+            "id": "7df52326-d183-45f0-892c-a3079c283b19",
+            "uid": "14013075-7df52326-d183-45f0-892c-a3079c283b19"
+          },
+          {
+            "name": "wallet",
+            "item": [
+              {
+                "name": "getAllWallets",
+                "id": "d2e6aa74-4d3b-4580-9ebd-ac4b53db4cbc",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/wallet",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "wallet"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "e54dd9ce-5fc7-4dcd-b711-c7a6b8e3900e",
+                    "name": "getAllWallets",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/wallet",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "wallet"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "533"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"215-rQ3Qx9g73YDGdl+M2msJLu4ra+s\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:42:04 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "[\n    {\n        \"walletId\": 1,\n        \"currency\": \"USD\",\n        \"balance\": 0,\n        \"userId\": 1,\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"walletId\": 2,\n        \"currency\": \"USD\",\n        \"balance\": 0,\n        \"userId\": 2,\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"walletId\": 3,\n        \"currency\": \"USD\",\n        \"balance\": 0,\n        \"userId\": 3,\n        \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n        \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n    },\n    {\n        \"walletId\": 4,\n        \"currency\": \"USD\",\n        \"balance\": 0,\n        \"userId\": 4,\n        \"createdAt\": \"2023-11-16T11:40:34.000Z\",\n        \"updatedAt\": \"2023-11-16T11:40:34.000Z\"\n    }\n]",
+                    "uid": "14013075-e54dd9ce-5fc7-4dcd-b711-c7a6b8e3900e"
+                  }
+                ],
+                "uid": "14013075-d2e6aa74-4d3b-4580-9ebd-ac4b53db4cbc"
+              },
+              {
+                "name": "getWalletById",
+                "id": "3aa7d316-3159-427a-8837-9fbd5d6e1f49",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/wallet/1",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "wallet", "1"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "d120ee8d-ab77-41f5-8a1e-aa7d0e660284",
+                    "name": "getWalletById",
+                    "originalRequest": {
+                      "method": "GET",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/wallet/1",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "wallet", "1"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "132"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"84-og6GtoeMRmcFIhlrm/QNNZwbSmw\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 11:42:12 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"walletId\": 1,\n    \"currency\": \"USD\",\n    \"balance\": 0,\n    \"userId\": 1,\n    \"createdAt\": \"2023-11-15T14:13:22.000Z\",\n    \"updatedAt\": \"2023-11-15T14:13:22.000Z\"\n}",
+                    "uid": "14013075-d120ee8d-ab77-41f5-8a1e-aa7d0e660284"
+                  }
+                ],
+                "uid": "14013075-3aa7d316-3159-427a-8837-9fbd5d6e1f49"
+              },
+              {
+                "name": "transferSameCurrency",
+                "id": "8132e4f7-0505-4b5a-b185-68ce8be1f285",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"receiverWalletId\": 3,\n    \"coinId\": 1,\n    \"quantity\": 23\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/wallet/transfer-same-currency",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "wallet", "transfer-same-currency"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "cece4ce5-c648-4f47-bcb5-c777cbd6cb64",
+                    "name": "transferSameCurrency",
+                    "originalRequest": {
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n    \"receiverWalletId\": 3,\n    \"coinId\": 1,\n    \"quantity\": 23\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/wallet/transfer-same-currency",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "wallet", "transfer-same-currency"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "169"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"a9-WvP8OD+V8SMYei/YR/Pct741ZwE\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 09:29:06 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"message\": \"Coins transferred successfully.\",\n    \"updatedCoins\": {\n        \"sender\": {\n            \"walletId\": 2,\n            \"coinId\": 1,\n            \"quantity\": 1024\n        },\n        \"receiver\": {\n            \"walletId\": 3,\n            \"coinId\": 1,\n            \"quantity\": 118.021\n        }\n    }\n}",
+                    "uid": "14013075-cece4ce5-c648-4f47-bcb5-c777cbd6cb64"
+                  }
+                ],
+                "uid": "14013075-8132e4f7-0505-4b5a-b185-68ce8be1f285"
+              },
+              {
+                "name": "transferDifferentCurrency",
+                "id": "317c462e-0283-423d-bd00-f7e8b147d5ec",
+                "protocolProfileBehavior": {
+                  "disableBodyPruning": true
+                },
+                "request": {
+                  "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"receiverWalletId\": 3,\n    \"senderCoinId\": 1,\n    \"receiverCoinId\": 3,\n    \"quantity\": 1\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{localhost}}/api/wallet/transfer-different-currency",
+                    "host": ["{{localhost}}"],
+                    "path": ["api", "wallet", "transfer-different-currency"]
+                  }
+                },
+                "response": [
+                  {
+                    "id": "78e18fc9-9efe-4537-ad11-0f21b5039f72",
+                    "name": "transferDifferentCurrency",
+                    "originalRequest": {
+                      "method": "POST",
+                      "header": [],
+                      "body": {
+                        "mode": "raw",
+                        "raw": "{\n    \"receiverWalletId\": 3,\n    \"senderCoinId\": 1,\n    \"receiverCoinId\": 3,\n    \"quantity\": 1\n}",
+                        "options": {
+                          "raw": {
+                            "language": "json"
+                          }
+                        }
+                      },
+                      "url": {
+                        "raw": "{{localhost}}/api/wallet/transfer-different-currency",
+                        "host": ["{{localhost}}"],
+                        "path": ["api", "wallet", "transfer-different-currency"]
+                      }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                      {
+                        "key": "X-Powered-By",
+                        "value": "Express"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=utf-8"
+                      },
+                      {
+                        "key": "Content-Length",
+                        "value": "167"
+                      },
+                      {
+                        "key": "ETag",
+                        "value": "W/\"a7-xBy4THdIYOaHvSHgre2Xgpg79A8\""
+                      },
+                      {
+                        "key": "Date",
+                        "value": "Thu, 16 Nov 2023 09:30:16 GMT"
+                      },
+                      {
+                        "key": "Connection",
+                        "value": "keep-alive"
+                      },
+                      {
+                        "key": "Keep-Alive",
+                        "value": "timeout=5"
+                      }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n    \"message\": \"Coins transferred successfully.\",\n    \"updatedCoins\": {\n        \"sender\": {\n            \"walletId\": 2,\n            \"coinId\": 1,\n            \"quantity\": 1023\n        },\n        \"receiver\": {\n            \"walletId\": 3,\n            \"coinId\": 3,\n            \"quantity\": 39677\n        }\n    }\n}",
+                    "uid": "14013075-78e18fc9-9efe-4537-ad11-0f21b5039f72"
+                  }
+                ],
+                "uid": "14013075-317c462e-0283-423d-bd00-f7e8b147d5ec"
+              }
+            ],
+            "id": "e1f3a1d9-6105-47c9-96c6-8e8acb57258d",
+            "uid": "14013075-e1f3a1d9-6105-47c9-96c6-8e8acb57258d"
+          },
+          {
+            "name": "hello",
+            "id": "8567d7ce-f4c6-42ba-a60a-b02bafc5e5a8",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{localhost}}",
+                "host": ["{{localhost}}"]
+              }
+            },
+            "response": [],
+            "uid": "14013075-8567d7ce-f4c6-42ba-a60a-b02bafc5e5a8"
+          }
+        ],
+        "id": "5be7cd64-ba04-40b8-8751-4db6cd91a990",
+        "uid": "14013075-5be7cd64-ba04-40b8-8751-4db6cd91a990"
+      }
+    ],
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "id": "ef2b6754-7c98-435f-b2cc-db0d3a738a9e",
+          "type": "text/javascript",
+          "exec": [""]
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "id": "000e2dbe-89f7-494a-8f06-e6cad3121185",
+          "type": "text/javascript",
+          "exec": [""]
+        }
+      }
+    ],
+    "variable": [
+      {
+        "key": "localhost",
+        "value": "",
+        "type": "string"
+      },
+      {
+        "key": "adminToken",
+        "value": "",
+        "type": "string"
+      },
+      {
+        "key": "userToken",
+        "value": "",
+        "type": "string"
+      }
+    ]
+  }
+}
