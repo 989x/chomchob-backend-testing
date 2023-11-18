@@ -5,6 +5,11 @@ class UserCard extends Model {
   public userCardId!: number;
   public userId!: number;
   public maskPan!: string;
+  public cardHolderName!: string;
+  public expirationDate!: Date;
+  public cvv!: string;
+  public cardType!: string; 
+  public isActive!: boolean;
 }
 
 UserCard.init(
@@ -21,6 +26,27 @@ UserCard.init(
     maskPan: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    cardHolderName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    expirationDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    cvv: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    cardType: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true, 
     },
   },
   {
