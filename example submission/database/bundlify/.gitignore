@@ -1,0 +1,9 @@
+# Node.js
+node_modules/
+
+# Dependency lock files
+package-lock.json
+pnpm-lock.yaml
+
+# Docker
+db
