@@ -21,6 +21,10 @@ pnpm dev
 
 ## Problem Solving
 
+**Entity Relationship Diagram**
+
+![ERD](./bundlify-ERD.png)
+  
 **Detail**
 
 ### 1. item ที่ขายจะต้องมี ชื่อสินค้า, รายละเอียดสินค้า, ราคาขาย, วันที่เปิดขาย, วันที่เลิกขาย
